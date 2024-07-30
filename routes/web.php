@@ -29,9 +29,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('courses/create', [CourseController::class, 'create'])->name('courses.create');
     Route::post('courses/store', [CourseController::class, 'store'])->name('courses.store');
     Route::get('courses/edit/{id?}', [CourseController::class, 'edit'])->name('courses.edit');
-    Route::put('courses/{id}', [CourseController::class, 'update'])->name('courses.update');
+    Route::post('courses/{id}/update', [CourseController::class, 'update'])->name('courses.update');
     Route::delete('courses/{id?}', [CourseController::class, 'destroy'])->name('courses.destroy');
 
-    Route::get('clone-material', [CourseController::class, 'cloneMaterial'])->name('clone.material');
-    Route::get('clone-question/{id?}', [CourseController::class, 'cloneQuestion'])->name('clone.question');
+    Route::get('clone-material/{id?}', [CourseController::class, 'cloneMaterial'])->name('clone.material');
+    Route::get('clone-question/{id?}/{index?}', [CourseController::class, 'cloneQuestion'])->name('clone.question');
+    Route::get('clone.module/{id?}', [CourseController::class, 'cloneModule'])->name('clone.module');
 });
