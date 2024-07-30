@@ -196,11 +196,11 @@ class CourseController extends Controller
                 }
 
                 $answers = array_values($md['answer']);
-                foreach ($md['questions'] as $question_key => $question) {
+                foreach (array_values($md['questions']) as $question_key => $question) {
                     $questionObj = new ModuleQuestion();
                     $questionObj->module_id = $module->id;
                     $questionObj->question = $question;
-                    $questionObj->status = $md['question_statuses'][$question_key];
+                    $questionObj->status = array_values($md['question_statuses'])[$question_key];
                     $questionObj->answer = $answers[$question_key];
                     $questionObj->save();
 
